@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -38,5 +41,49 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #faf8f8;
+}
+
+.global {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.robot-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  margin-top: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.robot-card {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.robot-card img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+}
+
+.part-list {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-top: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.part-card {
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid #ccc;
 }

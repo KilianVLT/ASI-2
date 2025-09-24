@@ -1,29 +1,30 @@
-import { useState } from 'react'
-import { Button } from "react-bootstrap";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import RobotList from './components/RobotList';
+import PartList from './components/PartList';
 
-function App(props) {
-  const [title, setTitle] = useState(props.title);
-  const [count, setCount] = useState(0);
+function App() {
+  const [robots, setRobots] = useState([]);
+  const [selectedRobot, setSelectedRobot] = useState(null);
 
-  const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
-  };
+  useEffect(() => {
+    fetch('https://robot-cpe-2024.cleverapps.io/robots')
+      .then(response => response.json())
+      .then(data => setRobots(data));
+  }, []);
 
   return (
-    <div className="App">
-      <h1 onMouseOver={() => setCount(count + 1)}> this is my first React Component</h1>
-      <label htmlFor="titleInput">Title</label>
-      <input
-        type="text"
-        id="titleInput"
-        onChange={handleChangeTitle}
-        value={title}
-      />
-      <h3>{title}</h3>
-      <h3>Vous avez survolé le titre {count} fois</h3>
+    <div className="App container py-4">
+      <h1 className="text-center mb-4">Magasin de robots</h1>
+      <div className="global">
+        <div className="col-md-8">
+          <RobotList robots={robots} setSelectedRobot={setSelectedRobot} />
+        </div>
+        <div className="col-md-4">
+          <PartList selectedRobot={selectedRobot} />
+        </div>
+      </div>
     </div>
   );
 }
